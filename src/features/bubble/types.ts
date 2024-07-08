@@ -75,6 +75,7 @@ export type ButtonTheme = {
   bottom?: number;
   right?: number;
   dragAndDrop?: boolean; // parameter to enable drag and drop(true or false)
+  autoWindowOpen?: autoWindowOpenTheme;
 };
 
 export type ToolTipTheme = {
@@ -83,4 +84,9 @@ export type ToolTipTheme = {
   tooltipBackgroundColor?: string;
   tooltipTextColor?: string;
   tooltipFontSize?: number;
+};
+
+export type autoWindowOpenTheme = {
+  autoOpen?: boolean; //parameter to control automatic window opening
+  openDelay?: number; // Optional parameter for delay time in seconds
 };

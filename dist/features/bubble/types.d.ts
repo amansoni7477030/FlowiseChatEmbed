@@ -67,6 +67,7 @@ export type ButtonTheme = {
     bottom?: number;
     right?: number;
     dragAndDrop?: boolean;
+    autoWindowOpen?: autoWindowOpenTheme;
 };
 export type ToolTipTheme = {
     showTooltip?: boolean;
@@ -74,5 +75,9 @@ export type ToolTipTheme = {
     tooltipBackgroundColor?: string;
     tooltipTextColor?: string;
     tooltipFontSize?: number;
+};
+export type autoWindowOpenTheme = {
+    autoOpen?: boolean;
+    openDelay?: number;
 };
 //# sourceMappingURL=types.d.ts.map

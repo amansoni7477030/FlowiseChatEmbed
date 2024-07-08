@@ -7,6 +7,8 @@ type Props = ButtonTheme & {
         right: number;
     }) => void;
     dragAndDrop: boolean;
+    autoOpen?: boolean;
+    openDelay?: number;
 };
 export declare const BubbleButton: (props: Props) => import("solid-js").JSX.Element;
 export {};

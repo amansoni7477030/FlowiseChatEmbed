@@ -285,7 +285,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     });
     setLocalStorageChatflow(props.chatflowid, chatId(), { chatHistory: messages });
   };
-  
+
   // Define the audioRef
   let audioRef: HTMLAudioElement | undefined;
   // CDN link for default receive sound
@@ -300,6 +300,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       audioRef.play();
     }
   };
+  let hasSoundPlayed = false;
 
   const updateLastMessage = (
     text: string,
@@ -324,6 +325,11 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
           if (newText === resultText) {
             uiUpdated = true;
           }
+          // Play sound when message starts streaming
+          if (previousText !== newText && !uiUpdated && !hasSoundPlayed) {
+            playReceiveSound();
+            hasSoundPlayed = true;
+          }
           return { ...item, message: newText, messageId, sourceDocuments, fileAnnotations, agentReasoning };
         }
         return item;
@@ -341,8 +347,12 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
         });
       }
 
-      if (resultText) {
+      if (resultText && !hasSoundPlayed) {
         playReceiveSound();
+      }
+
+      if (resultText) {
+        hasSoundPlayed = false;
       }
 
       addChatMessage(updated);

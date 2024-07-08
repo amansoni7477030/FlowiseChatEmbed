@@ -1,4 +1,4 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, createEffect, Show } from 'solid-js';
 import { isNotDefined, getBubbleButtonSize } from '@/utils/index';
 import { ButtonTheme } from '../types';
 
@@ -7,6 +7,8 @@ type Props = ButtonTheme & {
   toggleBot: () => void;
   setButtonPosition: (position: { bottom: number; right: number }) => void;
   dragAndDrop: boolean;
+  autoOpen?: boolean; // Optional parameter to control automatic window opening
+  openDelay?: number; // Optional parameter for delay time in milliseconds
 };
 
 const defaultButtonColor = '#3B81F6';
@@ -64,6 +66,19 @@ export const BubbleButton = (props: Props) => {
       setIsSmallScreen(true);
     }
   };
+
+  createEffect(() => {
+    // Automatically open the chat window if autoOpen is true
+    if (props.autoOpen && window.innerWidth > 640) {
+      const delayInSeconds = props.openDelay ?? 2; // Default to 2 seconds if openDelay is not defined
+      const delayInMilliseconds = delayInSeconds * 1000; // Convert seconds to milliseconds
+      setTimeout(() => {
+        if (!props.isBotOpened) {
+          props.toggleBot();
+        }
+      }, delayInMilliseconds);
+    }
+  });
 
   return (
     <Show when={!isSmallScreen() || !props.isBotOpened} keyed>
