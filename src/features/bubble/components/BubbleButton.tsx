@@ -8,7 +8,7 @@ type Props = ButtonTheme & {
   setButtonPosition: (position: { bottom: number; right: number }) => void;
   dragAndDrop: boolean;
   autoOpen?: boolean; // Optional parameter to control automatic window opening
-  openDelay?: number; // Optional parameter for delay time in milliseconds
+  openDelay?: number; // Optional parameter for delay time in seconds
 };
 
 const defaultButtonColor = '#3B81F6';
