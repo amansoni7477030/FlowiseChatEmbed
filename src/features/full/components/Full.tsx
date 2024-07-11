@@ -13,7 +13,6 @@ export const Full = (props: FullProps, { element }: { element: HTMLElement }) =>
 
   const launchBot = () => {
     setIsBotDisplayed(true);
-    // document.body.style.overflow = 'hidden'; // Disable scrolling when bot is displayed
     document.body.style.margin = '0'; // Ensure no margin
     document.documentElement.style.padding = '0'; // Ensure no padding
 
@@ -34,7 +33,6 @@ export const Full = (props: FullProps, { element }: { element: HTMLElement }) =>
 
   onCleanup(() => {
     botLauncherObserver.disconnect();
-    document.body.style.overflow = ''; // Re-enable scrolling when component unmounts
     document.body.style.margin = ''; // Reset margin
     document.documentElement.style.padding = ''; // Reset padding
 
@@ -80,6 +78,7 @@ export const Full = (props: FullProps, { element }: { element: HTMLElement }) =>
             apiHost={props.apiHost}
             isFullPage={true}
             observersConfig={props.observersConfig}
+            starterPromptFontSize={props.theme?.chatWindow?.starterPromptFontSize}
           />
         </div>
       </Show>
