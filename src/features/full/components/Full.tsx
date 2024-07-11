@@ -13,7 +13,7 @@ export const Full = (props: FullProps, { element }: { element: HTMLElement }) =>
 
   const launchBot = () => {
     setIsBotDisplayed(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling when bot is displayed
+    // document.body.style.overflow = 'hidden'; // Disable scrolling when bot is displayed
     document.body.style.margin = '0'; // Ensure no margin
     document.documentElement.style.padding = '0'; // Ensure no padding
 
