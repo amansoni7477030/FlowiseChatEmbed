@@ -131,6 +131,7 @@ You can also customize chatbot with different configuration
         height: 700,
         width: 400,
         fontSize: 16,
+        starterPromptFontSize: 15,
         botMessage: {
           backgroundColor: '#f7f8ff',
           textColor: '#303235',
