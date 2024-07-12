@@ -313,12 +313,12 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
   ) => {
     setMessages((data) => {
       let uiUpdated = false;
-  
+
       // Check if messageId has already been processed
-      if (data.some(item => item.messageId === messageId)) {
+      if (data.some((item) => item.messageId === messageId)) {
         return data;
       }
-  
+
       const updated = data.map((item, i) => {
         if (i === data.length - 1) {
           const previousText = item.message || '';
@@ -340,7 +340,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
         }
         return item;
       });
-  
+
       // Add apiMessage if resultText exists and ui not updated
       if (resultText && !uiUpdated) {
         updated.push({
@@ -352,20 +352,19 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
           agentReasoning,
         });
       }
-  
+
       if (resultText && !hasSoundPlayed) {
         playReceiveSound();
       }
-  
+
       if (resultText) {
         hasSoundPlayed = false;
       }
-  
+
       addChatMessage(updated);
       return [...updated];
     });
   };
-  
 
   const updateLastMessageSourceDocuments = (sourceDocuments: any) => {
     setMessages((data) => {
