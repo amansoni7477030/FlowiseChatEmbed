@@ -80,5 +80,6 @@ export type ToolTipTheme = {
 export type autoWindowOpenTheme = {
     autoOpen?: boolean;
     openDelay?: number;
+    autoOpenOnMobile?: boolean;
 };
 //# sourceMappingURL=types.d.ts.map

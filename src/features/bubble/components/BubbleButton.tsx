@@ -9,6 +9,7 @@ type Props = ButtonTheme & {
   dragAndDrop: boolean;
   autoOpen?: boolean; // Optional parameter to control automatic window opening
   openDelay?: number; // Optional parameter for delay time in seconds
+  autoOpenOnMobile?: boolean; // Optional parameter for opening on mobile
 };
 
 const defaultButtonColor = '#3B81F6';
@@ -71,7 +72,7 @@ export const BubbleButton = (props: Props) => {
 
   createEffect(() => {
     // Automatically open the chat window if autoOpen is true
-    if (props.autoOpen && window.innerWidth > 640) {
+    if (props.autoOpen && (props.autoOpenOnMobile || window.innerWidth > 640)) {
       const delayInSeconds = props.openDelay ?? 2; // Default to 2 seconds if openDelay is not defined
       const delayInMilliseconds = delayInSeconds * 1000; // Convert seconds to milliseconds
       setTimeout(() => {

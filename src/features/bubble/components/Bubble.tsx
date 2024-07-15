@@ -76,6 +76,7 @@ export const Bubble = (props: BubbleProps) => {
         dragAndDrop={bubbleProps.theme?.button?.dragAndDrop ?? false}
         autoOpen={bubbleProps.theme?.button?.autoWindowOpen?.autoOpen ?? false}
         openDelay={bubbleProps.theme?.button?.autoWindowOpen?.openDelay}
+        autoOpenOnMobile={bubbleProps.theme?.button?.autoWindowOpen?.autoOpenOnMobile ?? false}
       />
       <div
         part="bot"

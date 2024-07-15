@@ -90,4 +90,5 @@ export type ToolTipTheme = {
 export type autoWindowOpenTheme = {
   autoOpen?: boolean; //parameter to control automatic window opening
   openDelay?: number; // Optional parameter for delay time in seconds
+  autoOpenOnMobile?: boolean; // Optional parameter for opening on mobile
 };
