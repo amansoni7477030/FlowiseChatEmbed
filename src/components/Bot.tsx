@@ -194,6 +194,7 @@ const defaultTextColor = '#303235';
 export const Bot = (botProps: BotProps & { class?: string }) => {
   // set a default value for showTitle if not set and merge with other props
   const props = mergeProps({ showTitle: true }, botProps);
+  const feedbackColor = props.feedback?.color;
   let chatContainer: HTMLDivElement | undefined;
   let bottomSpacer: HTMLDivElement | undefined;
   let botContainer: HTMLDivElement | undefined;
@@ -1023,8 +1024,10 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
                         setLeadEmail={setLeadEmail}
                       />
                     )}
-                    {message.type === 'userMessage' && loading() && index() === messages().length - 1 && <LoadingBubble />}
-                    {message.type === 'apiMessage' && message.message === '' && loading() && index() === messages().length - 1 && <LoadingBubble />}
+                    {message.type === 'userMessage' && loading() && index() === messages().length - 1 && <LoadingBubble color={feedbackColor} />}
+                    {message.type === 'apiMessage' && message.message === '' && loading() && index() === messages().length - 1 && (
+                      <LoadingBubble color={feedbackColor} />
+                    )}
                     {message.sourceDocuments && message.sourceDocuments.length && (
                       <div style={{ display: 'flex', 'flex-direction': 'row', width: '100%', 'flex-wrap': 'wrap' }}>
                         <For each={[...removeDuplicateURL(message)]}>
